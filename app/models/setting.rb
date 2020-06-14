@@ -4,6 +4,19 @@ class Setting < ApplicationRecord
   PATH_TO_DEMOS = '/home/pi/Documents/rpi-rgb-led-matrix/examples-api-use'.freeze
 
   IMAGES = %i[eye.ppm malibu.ppm runtext16.ppm runtext.ppm strawberry.ppm white-ascii.ppm white.ppm].freeze
+  PROGRAMS = [
+    ['image-scroll-left', 1],
+    ['image-scroll-right', 2],
+    ['image-test-square', 3],
+    ['pulsing-color', 4],
+    ['greyscale-block', 5],
+    ['abelian-sandpile-model', 6],
+    ['conways-game-of-life', 7],
+    ['langtons-ant', 8],
+    ['volume-bars', 9],
+    ['evolution-of-color', 10],
+    ['pulsing-brightness', 11]
+  ]
 
   store_accessor :args, :image
   store_accessor :args, :brightness

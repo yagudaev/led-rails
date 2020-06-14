@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :program %>
-    <%= form.select :program, 1..11, selected: setting.program || 1 %>
+    <%= form.select :program, Setting::PROGRAMS, selected: setting.program || 1 %>
   </div>
 
   <div class="field">

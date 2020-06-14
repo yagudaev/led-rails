@@ -2,7 +2,7 @@
 
 <p>
   <strong>Program:</strong>
-  <%= @setting.program %>
+  <%= Setting::PROGRAMS[@setting.program.to_i - 1] %>
 </p>
 
 <p>
