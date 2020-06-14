@@ -26,6 +26,11 @@
     <%= form.select :image, Setting::IMAGES, selected: setting.image || 'strawberry.ppm' %>
   </div>
 
+  <div class="field">
+    <%= form.label :movement, 'Movement (ms)' %>
+    <%= form.number_field :movement, value: setting.movement || 0 %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
