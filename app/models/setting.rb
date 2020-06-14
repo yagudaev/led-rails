@@ -11,7 +11,7 @@ class Setting < ApplicationRecord
   end
 
   def kill_previous
-    run "sudo kill -9 #{pid}"
+    run "sudo kill -SIGINT #{pid}"
   end
 
   def run(cmd)
