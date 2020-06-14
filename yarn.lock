@@ -4297,6 +4297,13 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+marx-css@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/marx-css/-/marx-css-3.0.7.tgz#aba251526b5ba037cfd861282cd9e406215d8bbf"
+  integrity sha512-UAOus6LS/ryAMvufQueecl0Z9kJ5BoVWx0eE1u9xMAe+95aT8MuceB9ygp+Xfq15OrSIMYUnVZa5U/g+TAOBRQ==
+  dependencies:
+    sanitize.css "^8.0.0"
+
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -6342,6 +6349,11 @@ safe-regex@^1.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
+
+sanitize.css@^8.0.0:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/sanitize.css/-/sanitize.css-8.0.1.tgz#bd38f9752b0972849d2de260daeaa99878fd349e"
+  integrity sha512-5Gsh+BmqyhixJIh68mpP1NkiiKNTeQi9WPQvdVPxfcFIkiuXKcDkKHhYekxheK45KI52bIUC/FXK8R5HGOza5Q==
 
 sass-graph@2.2.5:
   version "2.2.5"

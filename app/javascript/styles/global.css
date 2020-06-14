@@ -1,0 +1,12 @@
+.field + .field {
+  margin-top: 12px;
+}
+
+.actions {
+  margin-top: 24px;
+}
+
+form + a {
+  margin-top: 12px;
+  display: block;
+}

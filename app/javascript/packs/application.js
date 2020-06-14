@@ -16,4 +16,6 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import "controllers"
+import 'controllers'
+import 'marx-css/css/marx.css'
+import 'styles/global.css'
