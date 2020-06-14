@@ -6,7 +6,7 @@ class Setting < ApplicationRecord
   def run_program
     kill_previous if pid
     pid = spawn "sudo #{PATH_TO_DEMOS}/demo -D1 --led-rows=64 --led-cols=64 --led-slowdown-gpio=1 --led-scan-mode=0 --led-pixel-mapper=\"Rotate:90\" --led-brightness=10 #{PATH_TO_DEMOS}/pictures/strawberry.ppm -m 0"
-    Process.wait(pid)
+    Process.detach(pid)
 
     self.pid = pid
   end
