@@ -18,7 +18,7 @@ class Setting < ApplicationRecord
 
   def kill_previous
     pgid = Process.getpgid(pid)
-    Process.kill('INT', -pgid)
+    Process.kill('HUP', -pgid)
   rescue Errno::ESRCH => e
     puts "warning: couldn't find process #{pid}"
   end
