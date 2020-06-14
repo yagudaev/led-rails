@@ -5,9 +5,11 @@ class Setting < ApplicationRecord
 
   def run_program
     kill_previous if pid
-    s = run "sudo #{PATH_TO_DEMOS}/demo -D1 --led-rows=64 --led-cols=64 --led-slowdown-gpio=1 --led-scan-mode=0 --led-pixel-mapper=\"Rotate:90\" --led-brightness=10 #{PATH_TO_DEMOS}/pictures/strawberry.ppm -m 0 &"
+    pid = fork do
+      run "sudo #{PATH_TO_DEMOS}/demo -D1 --led-rows=64 --led-cols=64 --led-slowdown-gpio=1 --led-scan-mode=0 --led-pixel-mapper=\"Rotate:90\" --led-brightness=10 #{PATH_TO_DEMOS}/pictures/strawberry.ppm -m 0"
+    end
 
-    self.pid = s.pid
+    self.pid = pid
   end
 
   def kill_previous
