@@ -16,6 +16,7 @@ class Setting < ApplicationRecord
   end
 
   def run(cmd)
+    puts "[CMD] #{cmd}"
     if ENV['SIMULATE']
       o, e, s = Open3.capture3 "echo \"#{cmd}\""
     else
