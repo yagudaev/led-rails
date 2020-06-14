@@ -3,11 +3,16 @@ class Setting < ApplicationRecord
 
   PATH_TO_DEMOS = '/home/pi/Documents/rpi-rgb-led-matrix/examples-api-use'.freeze
 
+  IMAGES = %i[eye.ppm malibu.ppm runtext16.ppm runtext.ppm strawberry.ppm white-ascii.ppm white.ppm].freeze
+
+  store_accessor :args, :image
+  store_accessor :args, :brightness
+
   def run_program
     kill_previous if pid
     pid = fork do
       Process.setsid
-      exec "#{PATH_TO_DEMOS}/demo -D1 --led-rows=64 --led-cols=64 --led-slowdown-gpio=1 --led-scan-mode=0 --led-pixel-mapper=\"Rotate:90\" --led-brightness=10 #{PATH_TO_DEMOS}/pictures/strawberry.ppm -m 0"
+      exec "#{PATH_TO_DEMOS}/demo -D#{program || 1} --led-rows=64 --led-cols=64 --led-slowdown-gpio=1 --led-scan-mode=0 --led-pixel-mapper=\"Rotate:90\" --led-brightness=#{brightness || 10} #{PATH_TO_DEMOS}/pictures/#{image || 'strawberry.ppm'} -m 0"
     end
     sleep 0.1
     Process.detach(pid)

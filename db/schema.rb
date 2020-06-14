@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_020019) do
   create_table "settings", force: :cascade do |t|
     t.integer "pid"
     t.string "program"
-    t.json "args"
+    t.json "args", default: {}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

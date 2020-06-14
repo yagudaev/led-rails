@@ -13,12 +13,17 @@
 
   <div class="field">
     <%= form.label :program %>
-    <%= form.text_field :program %>
+    <%= form.select :program, 1..11, selected: setting.program || 1 %>
   </div>
 
   <div class="field">
-    <%= form.label :args %>
-    <%= form.text_field :args %>
+    <%= form.label :brightness %>
+    <%= form.select :brightness, 0..100, selected: setting.brightness || 10 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.select :image, Setting::IMAGES, selected: setting.image || 'strawberry.ppm' %>
   </div>
 
   <div class="actions">

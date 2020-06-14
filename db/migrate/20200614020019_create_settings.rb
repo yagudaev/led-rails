@@ -3,7 +3,7 @@ class CreateSettings < ActiveRecord::Migration[6.0]
     create_table :settings do |t|
       t.integer :pid
       t.string :program
-      t.json :args
+      t.json :args, default: {}
 
       t.timestamps
     end
