@@ -3,7 +3,6 @@ class Setting < ApplicationRecord
 
   PATH_TO_DEMOS = '/home/pi/Documents/rpi-rgb-led-matrix/examples-api-use'.freeze
 
-  # TODO: try putting in a group and exiting
   def run_program
     kill_previous if pid
     pid = fork do
