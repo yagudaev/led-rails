@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resource :setting, only: %i[edit update]
+  resource :setting, only: %i[show create edit update]
   root 'settings#edit'
 end

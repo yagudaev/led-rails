@@ -3,6 +3,24 @@
 class SettingsController < ApplicationController
   before_action :set_setting, only: %i[show edit update destroy]
 
+  # GET /settings/1
+  # GET /settings/1.json
+  def show; end
+
+  def create
+    @setting = Setting.new(setting_params)
+
+    respond_to do |format|
+      if @setting.save
+        format.html { redirect_to [:edit, @setting], notice: 'Setting was successfully created.' }
+        format.json { render :show, status: :created, location: @setting }
+      else
+        format.html { render :edit }
+        format.json { render json: @setting.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /settings/1/edit
   def edit; end
 
