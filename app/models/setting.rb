@@ -22,11 +22,14 @@ class Setting < ApplicationRecord
   store_accessor :args, :brightness
   store_accessor :args, :movement
 
+  has_one_attached :local_image
+
   def run_program
     kill_previous if pid
     pid = fork do
       Process.setsid
-      exec "#{PATH_TO_DEMOS}/demo -D#{program || 1} --led-rows=64 --led-cols=64 --led-slowdown-gpio=1 --led-scan-mode=0 --led-pixel-mapper=\"Rotate:90\" --led-brightness=#{brightness || 10} #{PATH_TO_DEMOS}/pictures/#{image || 'strawberry.ppm'} -m #{movement || 0}"
+      cmd_image = local_image_ppm_on_disk || "#{PATH_TO_DEMOS}/pictures/#{image || 'strawberry.ppm'}"
+      exec "#{PATH_TO_DEMOS}/demo -D#{program || 1} --led-rows=64 --led-cols=64 --led-slowdown-gpio=1 --led-scan-mode=0 --led-pixel-mapper=\"Rotate:90\" --led-brightness=#{brightness || 10} #{cmd_image} -m #{movement || 0}"
     end
     sleep 0.1
     Process.detach(pid)
@@ -53,5 +56,17 @@ class Setting < ApplicationRecord
     puts e if e.present?
 
     s
+  end
+
+  def local_image_on_disk
+    ActiveStorage::Blob.service.send(:path_for, local_image.key) if local_image.attached?
+  end
+
+  def local_image_ppm
+    local_image.variant(convert: 'ppm') if local_image.attached?
+  end
+
+  def local_image_ppm_on_disk
+    ActiveStorage::Blob.service.send(:path_for, local_image_ppm.key) if local_image.attached?
   end
 end

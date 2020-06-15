@@ -29,6 +29,15 @@
   </div>
 
   <div class="field">
+    <%= form.label :movement, 'File' %>
+    <%= form.file_field :local_image %>
+    <p>Preview</p>
+    <%= image_tag setting.local_image.variant(resize_to_limit: [100, 100]) if setting.local_image.attached? %>
+    <%= setting.local_image_on_disk %>
+    <%= setting.local_image_ppm_on_disk %>
+  </div>
+
+  <div class="field">
     <%= form.label :movement, 'Movement (ms)' %>
     <%= form.number_field :movement, value: setting.movement || 0 %>
   </div>
