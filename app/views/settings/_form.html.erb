@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <%= form_with(model: setting, local: true, url: setting_path) do |form| %>
   <% if setting.errors.any? %>
     <div id="error_explanation">
