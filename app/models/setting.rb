@@ -66,7 +66,7 @@ class Setting < ApplicationRecord
   end
 
   def local_image_ppm
-    local_image.variant(convert: 'ppm') if local_image.attached?
+    local_image.variant(convert: 'ppm', resize_to_limit: [64, 64]) if local_image.attached?
   end
 
   def local_image_ppm_on_disk
