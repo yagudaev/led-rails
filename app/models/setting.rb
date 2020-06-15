@@ -1,5 +1,4 @@
 class Setting < ApplicationRecord
-  after_commit :run_program
 
   PATH_TO_DEMOS = '/home/pi/Documents/rpi-rgb-led-matrix/examples-api-use'.freeze
 
@@ -17,12 +16,17 @@ class Setting < ApplicationRecord
     ['evolution-of-color', 10],
     ['pulsing-brightness', 11]
   ]
+  RESIZE_METHODS = %i[resize_to_limit resize_to_fit resize_to_fill resize_and_pad].freeze
 
   store_accessor :args, :image
   store_accessor :args, :brightness
   store_accessor :args, :movement
+  store_accessor :args, :resize_method
 
   has_one_attached :local_image
+
+  after_commit :run_program
+  after_initialize :initialize_defaults, if: :new_record?
 
   def run_program
     kill_previous if pid
@@ -66,7 +70,7 @@ class Setting < ApplicationRecord
   end
 
   def local_image_ppm
-    local_image.variant(convert: 'ppm', resize_to_limit: [64, 64]) if local_image.attached?
+    local_image.variant(convert: 'ppm', resize_method => [64, 64]) if local_image.attached?
   end
 
   def local_image_ppm_on_disk
@@ -74,5 +78,11 @@ class Setting < ApplicationRecord
 
     local_image_ppm.processed
     ActiveStorage::Blob.service.send(:path_for, local_image_ppm.key)
+  end
+
+  private
+
+  def initialize_defaults
+    self.resize_method = :resize_to_limit
   end
 end

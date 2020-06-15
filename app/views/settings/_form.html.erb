@@ -38,6 +38,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :resize_method %>
+    <%= form.select :resize_method, Setting::RESIZE_METHODS, selected: setting.resize_method || :resize_to_limit %>
+  </div>
+
+  <div class="field">
     <%= form.label :movement, 'Movement (ms)' %>
     <%= form.number_field :movement, value: setting.movement || 0 %>
   </div>
