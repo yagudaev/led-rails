@@ -36,7 +36,8 @@ class Setting < ApplicationRecord
     sleep 0.1
     Process.detach(pid)
 
-    update!(pid: pid)
+    # avoids triggiring callbacks, this is by design
+    update_columns(pid: pid)
   end
 
   def kill_previous
