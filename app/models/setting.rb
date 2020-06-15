@@ -29,7 +29,9 @@ class Setting < ApplicationRecord
     pid = fork do
       Process.setsid
       cmd_image = local_image_ppm_on_disk || "#{PATH_TO_DEMOS}/pictures/#{image || 'strawberry.ppm'}"
-      exec "#{PATH_TO_DEMOS}/demo -D#{program || 1} --led-rows=64 --led-cols=64 --led-slowdown-gpio=1 --led-scan-mode=0 --led-pixel-mapper=\"Rotate:90\" --led-brightness=#{brightness || 10} #{cmd_image} -m #{movement || 0}"
+      cmd = "#{PATH_TO_DEMOS}/demo -D#{program || 1} --led-rows=64 --led-cols=64 --led-slowdown-gpio=1 --led-scan-mode=0 --led-pixel-mapper=\"Rotate:90\" --led-brightness=#{brightness || 10} #{cmd_image} -m #{movement || 0}"
+      puts "[CMD] #{cmd}"
+      exec cmd
     end
     sleep 0.1
     Process.detach(pid)
