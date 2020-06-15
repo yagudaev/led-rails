@@ -1,5 +1,5 @@
 class Setting < ApplicationRecord
-  before_save :run_program
+  after_commit :run_program
 
   PATH_TO_DEMOS = '/home/pi/Documents/rpi-rgb-led-matrix/examples-api-use'.freeze
 
@@ -36,7 +36,7 @@ class Setting < ApplicationRecord
     sleep 0.1
     Process.detach(pid)
 
-    self.pid = pid
+    update!(pid: pid)
   end
 
   def kill_previous
