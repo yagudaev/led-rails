@@ -32,6 +32,6 @@ module LedRails
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.hosts << 'raspberrypi.local'
-    config.active_storage.variant_processor = :vips
+    # config.active_storage.variant_processor = :vips
   end
 end
