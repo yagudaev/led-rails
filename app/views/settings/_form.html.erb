@@ -43,6 +43,21 @@
   </div>
 
   <div class="field">
+    <%= form.label :gravity %>
+    <%= form.select :gravity, Setting::GRAVITY, selected: setting.gravity || :Center %>
+  </div>
+
+  <div class="field">
+    <%= form.label :resize_width %>
+    <%= form.number_field :resize_width%>
+  </div>
+
+  <div class="field">
+    <%= form.label :resize_height %>
+    <%= form.number_field :resize_height %>
+  </div>
+
+  <div class="field">
     <%= form.label :movement, 'Movement (ms)' %>
     <%= form.number_field :movement, value: setting.movement || 0 %>
   </div>

@@ -17,11 +17,15 @@ class Setting < ApplicationRecord
     ['pulsing-brightness', 11]
   ]
   RESIZE_METHODS = %i[resize_to_limit resize_to_fit resize_to_fill resize_and_pad].freeze
+  GRAVITY= %i[NorthWest North NorthEast West Center East SouthWest South SouthEast].freeze
 
   store_accessor :args, :image
   store_accessor :args, :brightness
   store_accessor :args, :movement
   store_accessor :args, :resize_method
+  store_accessor :args, :resize_width
+  store_accessor :args, :resize_height
+  store_accessor :args, :gravity
 
   has_one_attached :local_image
 
@@ -84,5 +88,8 @@ class Setting < ApplicationRecord
 
   def initialize_defaults
     self.resize_method = :resize_to_limit
+    self.resize_width = 64
+    self.resize_height = 64
+    self.gravity = :Center
   end
 end

@@ -47,6 +47,6 @@ class SettingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def setting_params
-    params.require(:setting).permit(:program, :args, :brightness, :image, :movement, :local_image, :resize_method)
+    params.require(:setting).permit(:program, :args, :brightness, :image, :movement, :local_image, :resize_method, :resize_width, :resize_height, :gravity)
   end
 end
