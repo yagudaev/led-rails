@@ -71,7 +71,7 @@ class Setting < ApplicationRecord
   def local_image_ppm_on_disk
     return unless local_image.attached?
 
-    s.local_image_ppm.processed
+    local_image_ppm.processed
     ActiveStorage::Blob.service.send(:path_for, local_image_ppm.key)
   end
 end
