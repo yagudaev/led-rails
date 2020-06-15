@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Controls an LED panel attached to a raspberry pi. It uses https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/examples-api-use for the api and demo programs for the panel.
 
-Things you may want to cover:
+# TODO
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [ ] Add image uploading
+- [ ] Remove need for clicking "update" button and save open changes -- use stimulus reflex for that
+- [ ] Proper shutdown sequence -- terminate processes after rails shuts down
+- [ ] Create a proper deploy script -- run as production and keep running even after terminal is closed
