@@ -47,4 +47,4 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'stimulus_reflex', '~> 3.2'
 
-gem 'image_processing', '~> 1.11'
+gem 'image_processing', '~> 1.12'
